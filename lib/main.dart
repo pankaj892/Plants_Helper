@@ -42,7 +42,7 @@ class MyAppState extends State<MyApp> {
             // Use future builder and DefaultAssetBundle to load the local JSON file
             child: new FutureBuilder(
                 future: DefaultAssetBundle.of(context)
-                    .loadString('assets/PlantsData.json'),
+                    .loadString('PlantsData.json'),
                 builder: (context, snapshot) {
                   List<Plant> plants =
                   parseJson(snapshot.data.toString());
@@ -60,6 +60,7 @@ class MyAppState extends State<MyApp> {
     }
     final parsed =
     json.decode(response.toString()).cast<Map<String, dynamic>>();
+    
     return parsed.cast<Plant>((json) => new Plant.fromJson(json)).toList();
   }
 }
