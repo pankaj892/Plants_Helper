@@ -1,4 +1,4 @@
-com.example.plants
+com.example.gardening
 attr alpha
 attr font
 attr fontProviderAuthority
