@@ -6,4 +6,4 @@ A application for FlutterHackathon 2020.
 
 This project is a prototype of a gardening Flutter application.
 
-This project can be enhanced by adding the [Trefle api][https://trefle.io/]
+This project can be enhanced by adding the [Trefle api](https://trefle.io/)
