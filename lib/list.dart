@@ -12,23 +12,30 @@ class PlantList extends StatelessWidget {
         itemCount: plant == null ? 0 : plant.length,
         itemBuilder: (BuildContext context, int index) {
           return
-            new Card(
-              child: new Container(
-                child: new Center(
-                    child: new Column(
-                      // Stretch the cards in horizontal axis
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: <Widget>[
+             Card(
+              child:  Container(
 
-                        new Text(
-                          // Read the name field value and set it in the Text widget
-                          plant[index].name,
-                          // set some style to text
-                          style: new TextStyle(
-                              fontSize: 20.0, color: Colors.lightBlueAccent),
-                        ),
-                      ],
-                    )),
+                child:  MaterialButton(
+                  onPressed: (){},
+                  child: Center(
+                      child:  Column(
+                        // Stretch the cards in horizontal axis
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: <Widget>[
+
+                           Center(
+                             child: Text(
+                              // Read the name field value and set it in the Text widget
+                              plant[index].name,
+                              // set some style to text
+                              style: new TextStyle(
+                                  fontSize: 20.0, color: Colors.lightBlueAccent),
+                             ),
+                           ),
+                        ],
+                      )
+                  ),
+                ),
                 padding: const EdgeInsets.all(15.0),
               ),
             );

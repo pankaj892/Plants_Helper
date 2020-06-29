@@ -58,9 +58,14 @@ class MyAppState extends State<MyApp> {
     if(response==null){
       return [];
     }
+    List<Plant> mylist=[];
     final parsed =
-    json.decode(response.toString()).cast<Map<String, dynamic>>();
-    
-    return parsed.cast<Plant>((json) => new Plant.fromJson(json)).toList();
+    json.decode(response.toString())/*.cast<Map<String, dynamic>>()*/;
+
+    mylist.add(Plant.fromJson(parsed , 0));
+    mylist.add(Plant.fromJson(parsed , 1));
+    mylist.add(Plant.fromJson(parsed , 2));
+    return mylist;
+    // return parsed.cast<Plant>((json) => new Plant.fromJson(json)).toList();
   }
 }
