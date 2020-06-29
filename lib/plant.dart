@@ -2,19 +2,19 @@
 import 'dart:convert';
 
 class Plant {
-  final String name;
-  final String water;
-  final String maxHeat;
-  final String minHeat;
-  final String avgLife;
+   String name;
+   String water;
+   String maxHeat;
+   String minHeat;
+   String avgLife;
 
   Plant({this.name, this.water, this.maxHeat, this.minHeat, this.avgLife});
 
-   factory Plant.fromJson(/*Map<String, dynamic>*/ dynamic Res , int a) {
+   factory Plant.fromJson(/*Map<String, dynamic>*/ var Res , int a) {
     final data = Res;
-    print(data);
+    print(data["$a"]['Name']);
 
-      return  new Plant(
+      return Plant(
         name: data['$a']['Name'] as String,
         water: data['$a']['Water'] as String,
         maxHeat: data['$a']['MaximmumHeat'] as String,

@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'plant.dart';
@@ -8,7 +9,9 @@ class PlantList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return new ListView.builder(
+
+    bool open = false ;
+    return  ListView.builder(
         itemCount: plant == null ? 0 : plant.length,
         itemBuilder: (BuildContext context, int index) {
           return
@@ -16,7 +19,12 @@ class PlantList extends StatelessWidget {
               child:  Container(
 
                 child:  MaterialButton(
-                  onPressed: (){},
+                  onPressed: (){
+                    open = !open;
+
+                    // ignore: unnecessary_statements
+                     (open) ? Navigator.push(context, MaterialPageRoute(builder: (context) => PlantInfo(plant: plant[index],))) : '';
+                  },
                   child: Center(
                       child:  Column(
                         // Stretch the cards in horizontal axis
@@ -40,5 +48,52 @@ class PlantList extends StatelessWidget {
               ),
             );
         });
+  }
+}
+
+
+
+class PlantInfo extends StatefulWidget {
+  final Plant plant;
+  PlantInfo({this.plant});
+  @override
+  _PlantInfoState createState() => _PlantInfoState();
+}
+
+class _PlantInfoState extends State<PlantInfo> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Plants Helper' , style: TextStyle(color: Colors.white),),
+        elevation: 1,
+        centerTitle: true,
+        backgroundColor: Colors.green[600],
+      ),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: <Widget>[
+          Container(
+          padding: EdgeInsets.only(left: 20 , top: 20),
+          child: Text( widget.plant.name.toUpperCase() , style: TextStyle(fontSize: 20),),
+          ),
+          Container(
+            padding: EdgeInsets.only(left: 20 , top: 20),
+            child: Text( "Average Lifespan:   ${widget.plant.avgLife}" , style: TextStyle(fontSize: 15),),
+          ),
+          Container(
+            padding: EdgeInsets.only(left: 20 , top: 5),
+            child: Text( "Water Consumption:   ${widget.plant.water}" , style: TextStyle(fontSize: 15),),
+          ),
+          Container(
+            padding: EdgeInsets.only(left: 20 , top: 5),
+            child: Text( "Heat Tolerance:   Min ${widget.plant.minHeat}  , Max ${widget.plant.maxHeat}" , style: TextStyle(fontSize: 15),),
+          ),
+
+
+        ],
+      ),
+    );
   }
 }

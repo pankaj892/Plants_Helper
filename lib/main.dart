@@ -11,14 +11,14 @@ void main() {
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
   ]);
-  runApp(new MaterialApp(
+  runApp( MaterialApp(
     debugShowCheckedModeBanner: false,
-    theme: new ThemeData(
-      primaryColor: const Color(0xFF02BB9F),
-      primaryColorDark: const Color(0xFF167F67),
-      accentColor: const Color(0xFF167F67),
+    theme:  ThemeData(
+      primaryColor:  Color(0xFF02BB9F),
+      primaryColorDark:  Color(0xFF167F67),
+      accentColor:  Color(0xFF167F67),
     ),
-    home: new MyApp(),
+    home:  MyApp(),
   ));
 }
 
@@ -33,39 +33,44 @@ class MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
-        appBar: new AppBar(
-          title: new Text("Plants Info",
-            style: new TextStyle(color: Colors.white),),
+        appBar:  AppBar(
+          title:  Text("Plants Info",
+            style:  TextStyle(color: Colors.white),),
         ),
-        body: new Container(
+        body:  Container(
           child: Center(
             // Use future builder and DefaultAssetBundle to load the local JSON file
-            child: new FutureBuilder(
+            child:  FutureBuilder(
                 future: DefaultAssetBundle.of(context)
                     .loadString('PlantsData.json'),
                 builder: (context, snapshot) {
                   List<Plant> plants =
                   parseJson(snapshot.data.toString());
                   return plants != null
-                      ? new PlantList(plant: plants)
+                      ?   PlantList(plant: plants)
                       : Center(child: new CircularProgressIndicator());
                 }),
           ),
         ));
   }
 
-  List<Plant> parseJson(String response) {
+   List<Plant> parseJson(String response)  {
     if(response==null){
       return [];
+    }else {
+      List<Plant> mylist=[];
+      final parsed = json.decode(response.toString());
+      if(parsed==null)
+        print('Error skip');
+      else{
+        mylist.add(Plant.fromJson(parsed , 0));
+        mylist.add(Plant.fromJson(parsed , 1));
+        mylist.add(Plant.fromJson(parsed , 2));
+      }
+     //print(parsed.runtimeType.toString());
+      return mylist;
     }
-    List<Plant> mylist=[];
-    final parsed =
-    json.decode(response.toString())/*.cast<Map<String, dynamic>>()*/;
-
-    mylist.add(Plant.fromJson(parsed , 0));
-    mylist.add(Plant.fromJson(parsed , 1));
-    mylist.add(Plant.fromJson(parsed , 2));
-    return mylist;
     // return parsed.cast<Plant>((json) => new Plant.fromJson(json)).toList();
   }
 }
+
