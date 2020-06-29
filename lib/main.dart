@@ -58,17 +58,17 @@ class MyAppState extends State<MyApp> {
     if(response==null){
       return [];
     }else {
-      List<Plant> mylist=[];
+      List<Plant> myList=[];
       final parsed = json.decode(response.toString());
       if(parsed==null)
         print('Error skip');
       else{
-        mylist.add(Plant.fromJson(parsed , 0));
-        mylist.add(Plant.fromJson(parsed , 1));
-        mylist.add(Plant.fromJson(parsed , 2));
+        myList.add(Plant.fromJson(parsed , 0));
+        myList.add(Plant.fromJson(parsed , 1));
+        myList.add(Plant.fromJson(parsed , 2));
       }
      //print(parsed.runtimeType.toString());
-      return mylist;
+      return myList;
     }
     // return parsed.cast<Plant>((json) => new Plant.fromJson(json)).toList();
   }

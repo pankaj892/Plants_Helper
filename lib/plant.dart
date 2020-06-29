@@ -10,16 +10,16 @@ class Plant {
 
   Plant({this.name, this.water, this.maxHeat, this.minHeat, this.avgLife});
 
-   factory Plant.fromJson(/*Map<String, dynamic>*/ var Res , int a) {
-    final data = Res;
+   factory Plant.fromJson(/*Map<String, dynamic>*/ var res , int a) {
+    final data = res;
     print(data["$a"]['Name']);
 
       return Plant(
         name: data['$a']['Name'] as String,
         water: data['$a']['Water'] as String,
-        maxHeat: data['$a']['MaximmumHeat'] as String,
+        maxHeat: data['$a']['MaximumHeat'] as String,
         minHeat: data['$a']['MinimumHeat'] as String,
-        avgLife: data['$a']['AvarageLife'] as String,
+        avgLife: data['$a']['AverageLife'] as String,
       );
 
   }
