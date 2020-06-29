@@ -34,8 +34,8 @@ class MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return  Scaffold(
         appBar:  AppBar(
-          title:  Text("Plants Info",
-            style:  TextStyle(color: Colors.white),),
+          title:  Text('Plants Helper' , style: TextStyle(color: Colors.white),),
+           centerTitle: true,
         ),
         body:  Container(
           child: Center(

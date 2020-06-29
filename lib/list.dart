@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'plant.dart';
 
 class PlantList extends StatelessWidget {
@@ -40,6 +41,7 @@ class PlantList extends StatelessWidget {
                                   fontSize: 20.0, color: Colors.lightBlueAccent),
                              ),
                            ),
+
                         ],
                       )
                   ),
@@ -68,7 +70,6 @@ class _PlantInfoState extends State<PlantInfo> {
         title: Text('Plants Helper' , style: TextStyle(color: Colors.white),),
         elevation: 1,
         centerTitle: true,
-        backgroundColor: Colors.green[600],
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -90,8 +91,17 @@ class _PlantInfoState extends State<PlantInfo> {
             padding: EdgeInsets.only(left: 20 , top: 5),
             child: Text( "Heat Tolerance:   Min ${widget.plant.minHeat}  , Max ${widget.plant.maxHeat}" , style: TextStyle(fontSize: 15),),
           ),
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: Container(
 
-
+              margin: EdgeInsets.only(bottom: 42 , top: 100),
+              child: Opacity(
+                  opacity: 0.5,
+                  child: Image.asset('Assets/3700577.jpg' , width: 216, height: 216,)
+              ),
+            ),
+          )
         ],
       ),
     );
